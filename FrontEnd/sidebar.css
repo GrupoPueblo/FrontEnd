@@ -1,0 +1,86 @@
+/* Aseguramos que el html y el body ocupen toda la altura disponible */
+html, body {
+    height: 100%;
+    margin: 0;
+}
+
+/* Usamos flexbox para distribuir el contenido de la página verticalmente */
+body {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+/* Contenedor principal para todo el contenido */
+.container1 {
+    display: flex;
+    flex: 1; /* Esto hará que el contenedor ocupe todo el espacio disponible */
+    height: 100%; /* Asegura que el contenedor principal ocupe toda la altura */
+}
+
+/* sidebar que debe estirarse hasta el footer */
+.sidebar {
+    width: 280px;
+    background-color: #f8f9fa;
+    display: flex;
+    flex-direction: column;
+    height: 100%; /* Hace que el sidebar ocupe toda la altura disponible */
+}
+
+/* El contenido dentro del sidebar */
+.sidebar-content {
+    display: flex;
+    flex-direction: column;
+    padding: 16px;
+    flex: 1; /* Permite que el contenido ocupe todo el espacio disponible dentro del sidebar */
+}
+
+/* El pie de página debe mantenerse en la parte inferior */
+footer {
+    margin-top: auto; /* Esto asegura que el footer se ubique al final */
+}
+
+/* Otros estilos que ya tienes */
+.sidebar-brand {
+    display: flex;
+    align-items: center;
+    margin-bottom: 16px;
+    text-decoration: none;
+    color: #000;
+}
+
+.nav-pills .nav-link {
+    padding: 10px 16px;
+    color: #6c757d;
+}
+
+.nav-pills .nav-link.active {
+    background-color: #0d6efd;
+    color: white;
+}
+
+.nav-link:hover {
+    color: #0d6efd;
+}
+
+.dropdown-toggle {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: #000;
+}
+
+.dropdown-menu {
+    min-width: 200px;
+}
+
+.dropdown-item {
+    padding: 10px 16px;
+}
+
+.dropdown-item:hover {
+    background-color: #f8f9fa;
+}
+
+
+
