@@ -3,7 +3,7 @@ name: Deploy Frontend to VPS
 on:
   push:
     branches:
-      - main 
+      - main
 
 jobs:
   deploy:
@@ -20,15 +20,18 @@ jobs:
 
       - name: Clean frontend folder on VPS
         run: |
-          ssh -o StrictHostKeyChecking=no -i id_ed25519 ${{ secrets.VPS_USER }}@${{ secrets.VPS_HOST }} << 'EOF'
+          ssh -o StrictHostKeyChecking=no -i id_ed25519 ${{ secrets.VPS_USER }}@${{ secrets.VPS_HOST }} << EOF
             mkdir -p ~/frontend
             cd ~/frontend
             rm -rf *
           EOF
 
-      - name: Copy frontend to VPS
+      - name: Copy frontend to VPS (only build files)
         run: |
-          rsync -avz -e "ssh -i id_ed25519 -o StrictHostKeyChecking=no" ./ ${{ secrets.VPS_USER }}@${{ secrets.VPS_HOST }}:~/frontend/
+          rsync -avz --exclude='.git/' --exclude='.github/' --exclude='README.md' --exclude='id_ed25519' \
+          -e "ssh -i id_ed25519 -o StrictHostKeyChecking=no" ./ ${{ secrets.VPS_USER }}@${{ secrets.VPS_HOST }}:~/frontend/
 
       - name: Clean up SSH key
         run: rm -f id_ed25519
+
+    
